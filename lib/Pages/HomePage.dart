@@ -11,6 +11,31 @@ class MyHomePage extends StatefulWidget{
 
 class _MyHomePage extends State<MyHomePage>{
   
+  int count=0;
+  int CheckTasbi7=1;
+  int finalFirstTasbi7=0;
+  void increment(){
+    setState(() {
+      count++;
+      if(count==33){
+        CheckTasbi7++;
+        count=0;
+      }
+      if(CheckTasbi7==5){
+        count=0;
+        finalFirstTasbi7++;
+        CheckTasbi7=1;
+      }
+    });
+  }
+
+void resetVariables() {
+  setState(() {
+    count = 0;
+    CheckTasbi7 = 1;
+    finalFirstTasbi7 = 0;
+  });
+}
 
   int _selectIndex=0;
   void changeSelectedINdex(int index){
@@ -18,6 +43,7 @@ class _MyHomePage extends State<MyHomePage>{
       _selectIndex=index;
     });
   }
+
   @override
   Widget build(BuildContext context){
     return DefaultTabController(
@@ -48,7 +74,7 @@ class _MyHomePage extends State<MyHomePage>{
         visible: _selectIndex==0 ? true : false,
         child: FloatingActionButton(
         backgroundColor:const Color(0xFF9E653B),
-        onPressed: (){},child: const Text("+1"),
+        onPressed: (){increment();},child:  Text("${count}"),
       )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: CurvedNavigationBar(
@@ -63,7 +89,7 @@ class _MyHomePage extends State<MyHomePage>{
            Icon(Icons.mosque,color: Colors.white,),
            Icon(Icons.read_more,color: Colors.white,)
       ]),
-      body: _selectIndex==0 ? const Tasbi7Page() : const MoreDetails(),
+      body: _selectIndex==0 ?  Tasbi7Page(count: count,CheckTasbi7: CheckTasbi7,finalTsbi7:finalFirstTasbi7,resetVariables: resetVariables,) : const MoreDetails(),
     ),
     );
   }
