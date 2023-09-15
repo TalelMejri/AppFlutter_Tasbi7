@@ -1,7 +1,10 @@
+
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'MoreDetails.dart';
 import 'Tasbi7Page.dart';
+
 class MyHomePage extends StatefulWidget{
   const MyHomePage({super.key});
 
@@ -10,7 +13,9 @@ class MyHomePage extends StatefulWidget{
 }
 
 class _MyHomePage extends State<MyHomePage>{
+
   
+  bool playConfetti=false;
   int count=0;
   int CheckTasbi7=1;
   int finalFirstTasbi7=0;
@@ -25,6 +30,10 @@ class _MyHomePage extends State<MyHomePage>{
         count=0;
         finalFirstTasbi7++;
         CheckTasbi7=1;
+        playConfetti=true;
+        Future.delayed(const Duration(seconds: 3),(){
+          playConfetti=false;
+        });
       }
     });
   }
@@ -62,10 +71,11 @@ void resetVariables() {
              child:   Icon(Icons.info,color: Color(0xFF9E653B)),
           )
         ],
-        bottom:const TabBar(
+        bottom: TabBar(
           isScrollable: false,
           indicatorColor: Color(0xFF9E653B),
           tabs: [
+            
             Text("التسبيح أفضل الكلام وأحبُّه إلى الله",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold)),
           ]
         ),
@@ -89,7 +99,8 @@ void resetVariables() {
            Icon(Icons.mosque,color: Colors.white,),
            Icon(Icons.read_more,color: Colors.white,)
       ]),
-      body: _selectIndex==0 ?  Tasbi7Page(count: count,CheckTasbi7: CheckTasbi7,finalTsbi7:finalFirstTasbi7,resetVariables: resetVariables,) : const MoreDetails(),
+      
+      body: _selectIndex==0 ?  Tasbi7Page(count: count,CheckTasbi7: CheckTasbi7,finalTsbi7:finalFirstTasbi7,resetVariables: resetVariables,playConfetti:playConfetti) : const MoreDetails(),
     ),
     );
   }

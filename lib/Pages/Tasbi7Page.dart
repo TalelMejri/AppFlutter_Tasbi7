@@ -1,11 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:tasbi7/data/tabTasbi7.dart';
+import 'package:confetti/confetti.dart';
+import 'dart:math';
 class Tasbi7Page extends StatefulWidget{
-  Tasbi7Page({super.key, this.count,this.CheckTasbi7,this.finalTsbi7,this.resetVariables});
+  Tasbi7Page({super.key, this.count,this.CheckTasbi7,this.finalTsbi7,this.resetVariables,this.playConfetti});
   int ? count;
   int ? CheckTasbi7;
   int ? finalTsbi7;
+  bool ? playConfetti;
   final Function? resetVariables;
   @override
   State<Tasbi7Page> createState()=>_Tasbi7Page();
@@ -13,11 +16,23 @@ class Tasbi7Page extends StatefulWidget{
 
 class _Tasbi7Page extends State<Tasbi7Page>{
   
+  late ConfettiController _centerController;
+
+  @override
+  void initState() {
+    super.initState();
+      _centerController =
+        ConfettiController(duration: const Duration(seconds: 5));
+         if(widget.playConfetti==true){
+            _centerController.play();
+        }
+  }
+
   @override
   Widget build(BuildContext context){
     return Padding(padding: const EdgeInsets.symmetric(vertical: 60),
     child: Column(children: [
-     widget.finalTsbi7!=0 ? Text(' ${widget.finalTsbi7} : عدد التسبيح',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),) :const Text(""),
+     widget.finalTsbi7!=0 ? Text(' ${widget.finalTsbi7} : عدد التسبيح',style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),) :const Text(""),
       const SizedBox(height: 10,),
       Expanded(child: ListView.builder(
           itemCount: tab.length,
@@ -40,13 +55,26 @@ class _Tasbi7Page extends State<Tasbi7Page>{
                   );
       } ,  ),
       ),
+          Align(
+                alignment: Alignment.center,
+                child: ConfettiWidget(
+                  confettiController: _centerController,
+                  blastDirection: pi / 2,
+                  maxBlastForce: 5,
+                  minBlastForce: 1,
+                  emissionFrequency: 0.03,
+                  numberOfParticles: 10,
+                  gravity: 0,
+                ),
+              ),
       const SizedBox(height: 20),
        ElevatedButton.icon(
         style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
             onPressed:(){  
-               if (widget.resetVariables != null) {
+               _centerController.stop();
+                 if (widget.resetVariables != null) {
                       widget.resetVariables!(); 
-             }}, 
+                }}, 
             icon:const Icon(Icons.replay_outlined,color: Colors.blue,),
             label:const Text("اعادة",style: TextStyle(color:Colors.blue,fontSize: 20),),
       )
