@@ -17,7 +17,7 @@ class _MyHomePage extends State<MyHomePage>{
   void increment(){
     setState(() {
       count++;
-      if(count==33){
+      if(count>=33){
         CheckTasbi7++;
         count=0;
       }

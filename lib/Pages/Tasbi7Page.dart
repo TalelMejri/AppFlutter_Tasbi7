@@ -17,10 +17,8 @@ class _Tasbi7Page extends State<Tasbi7Page>{
   Widget build(BuildContext context){
     return Padding(padding: const EdgeInsets.symmetric(vertical: 60),
     child: Column(children: [
-      Text('${widget.finalTsbi7}'),
+     widget.finalTsbi7!=0 ? Text(' ${widget.finalTsbi7} : عدد التسبيح',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),) :const Text(""),
       const SizedBox(height: 10,),
-      Text('${widget.count}'),
-      const SizedBox(height: 20,),
       Expanded(child: ListView.builder(
           itemCount: tab.length,
             itemBuilder: (context,index){
@@ -31,7 +29,12 @@ class _Tasbi7Page extends State<Tasbi7Page>{
                     child: ListTile(
                             title: Text(
                                     tab[index],
-                                    style:const TextStyle(fontSize: 35),textAlign:TextAlign.center
+                                    style:
+                                    index+1==widget.CheckTasbi7 ? 
+                                    const TextStyle(
+                                      fontSize: 35,
+                                      color: Colors.white
+                                    ): const TextStyle( fontSize: 35),textAlign:TextAlign.center
                                    )
                            )
                   );
@@ -39,12 +42,13 @@ class _Tasbi7Page extends State<Tasbi7Page>{
       ),
       const SizedBox(height: 20),
        ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
             onPressed:(){  
                if (widget.resetVariables != null) {
                       widget.resetVariables!(); 
              }}, 
-            icon:const Icon(Icons.replay_outlined),
-            label:const Text("اعادة"),
+            icon:const Icon(Icons.replay_outlined,color: Colors.blue,),
+            label:const Text("اعادة",style: TextStyle(color:Colors.blue,fontSize: 20),),
       )
     ],)
     );
