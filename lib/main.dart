@@ -1,25 +1,14 @@
 import 'package:flutter/material.dart';
 import 'widget/loading.dart'; 
-import 'Pages/testPages.dart';
+import 'Pages/HomePage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HomePage(title: "Tasbi7",));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(title: "AppPage"),
-    );
-  }
-}
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title});
+  const HomePage({ super.key,required this.title});
 
   final String title;
 
@@ -34,18 +23,22 @@ class _HomePage extends State<HomePage> {
   void initState() {
     super.initState();
     main = const Loading();
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 5), () {
       setState(() {
-        main = const LoadingWidget(); 
+        main = const MyHomePage(); 
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFE5D7BC),
-      body: main,
+    return MaterialApp
+    (
+      home: main,
+      debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+       ),
     );
   }
 }
