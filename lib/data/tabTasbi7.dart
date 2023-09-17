@@ -6,6 +6,11 @@
   "الله أكبر"
 ];
 
+
+List<String> Adhkar=[
+
+];
+
  
 
 
