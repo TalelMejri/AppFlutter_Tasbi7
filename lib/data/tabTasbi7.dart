@@ -8,7 +8,24 @@
 
 
 List<String> Adhkar=[
-
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
+  "Say Allah",
 ];
 
  
