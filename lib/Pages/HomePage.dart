@@ -96,6 +96,18 @@ void resetVariables() {
         onTap: (index){changeSelectedINdex(index);},
         index: _selectIndex,
          items:<Widget> [
+            //     PopupMenuButton<String>(
+            //   key: const Key('popup_menu'),
+            //   onSelected: (action) {
+            //      print("test");
+            //   },
+            //   itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+            //     const PopupMenuItem(
+            //       key: Key('delete_all'),
+            //       child: Text('Delete all'),
+            //     ),
+            //   ],
+            // ),
            Icon(Icons.mosque,color: Colors.white,),
            Icon(Icons.read_more,color: Colors.white,)
       ]),
