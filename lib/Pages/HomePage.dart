@@ -1,5 +1,3 @@
-
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'MoreDetails.dart';
@@ -68,6 +66,18 @@ void resetVariables() {
         actions:[
             Padding(
              padding:  EdgeInsets.all(15),
+            //   PopupMenuButton<String>(
+            //   key: const Key('popup_menu'),
+            //   onSelected: (action) {
+            //      print("test");
+            //   },
+            //   itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+            //     const PopupMenuItem(
+            //       key: Key('delete_all'),
+            //       child: Text('Delete all'),
+            //     ),
+            //   ],
+            // ),
              child:   Icon(Icons.info,color: Color(0xFF9E653B)),
           )
         ],
@@ -96,18 +106,7 @@ void resetVariables() {
         onTap: (index){changeSelectedINdex(index);},
         index: _selectIndex,
          items:<Widget> [
-            //     PopupMenuButton<String>(
-            //   key: const Key('popup_menu'),
-            //   onSelected: (action) {
-            //      print("test");
-            //   },
-            //   itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            //     const PopupMenuItem(
-            //       key: Key('delete_all'),
-            //       child: Text('Delete all'),
-            //     ),
-            //   ],
-            // ),
+           
            Icon(Icons.mosque,color: Colors.white,),
            Icon(Icons.read_more,color: Colors.white,)
       ]),
