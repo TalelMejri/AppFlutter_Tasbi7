@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tasbi7/data/tabTasbi7.dart';
 import 'package:confetti/confetti.dart';
 import 'dart:math';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 class Tasbi7Page extends StatefulWidget{
   Tasbi7Page({super.key, this.count,this.CheckTasbi7,this.finalTsbi7,this.resetVariables,this.playConfetti});
   int ? count;
@@ -18,6 +20,10 @@ class _Tasbi7Page extends State<Tasbi7Page>{
   
   late ConfettiController _centerController;
 
+  final storage = new FlutterSecureStorage();
+
+
+
   @override
   void initState() {
     super.initState();
@@ -26,6 +32,18 @@ class _Tasbi7Page extends State<Tasbi7Page>{
          if(widget.playConfetti==true){
             _centerController.play();
         }
+       CreateInLocalStorage("token", "TOKEN CREATE");
+  }
+
+
+  Future CreateInLocalStorage(String key,String token)async{
+    var val=await storage.write(key: key, value: token);
+    return val;
+  }
+
+   Future<String?> GetValFromLocalStroge(String key)async{
+    var val=await storage.read(key: key);
+    return val;
   }
 
   @override
