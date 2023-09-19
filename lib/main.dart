@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'widget/loading.dart'; 
 import 'Pages/HomePage.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-  runApp(const HomePage(title: "Tasbi7",));
+  runApp(const HomePage(title: "Tasbi7"));
 }
-
 
 class HomePage extends StatefulWidget {
   const HomePage({ super.key,required this.title});
@@ -39,6 +39,13 @@ class _HomePage extends State<HomePage> {
         theme: ThemeData(
             primarySwatch: Colors.blue,
        ),
+       localizationsDelegates: const[
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+       ],
+       supportedLocales: const[
+        Locale('ar','AR')
+       ],
     );
   }
 }

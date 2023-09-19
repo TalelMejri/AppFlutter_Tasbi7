@@ -38,6 +38,8 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   confetti: ^0.7.0
   flutter_secure_storage: ^9.0.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:

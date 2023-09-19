@@ -44,7 +44,7 @@ void resetVariables() {
   });
 }
 
-  int _selectIndex=0;
+  int _selectIndex=1;
   void changeSelectedINdex(int index){
     setState(() {
       _selectIndex=index;
@@ -64,7 +64,7 @@ void resetVariables() {
              child:Image.asset("images/tasbi7.png"),
           ),
         actions:[
-            Padding(
+             Padding(
              padding:  EdgeInsets.all(15),
             //   PopupMenuButton<String>(
             //   key: const Key('popup_menu'),
@@ -91,7 +91,7 @@ void resetVariables() {
         ),
       ),
       floatingActionButton: Visibility(
-        visible: _selectIndex==0 ? true : false,
+        visible: _selectIndex==1 ? true : false,
         child: FloatingActionButton(
         backgroundColor:const Color(0xFF9E653B),
         onPressed: (){increment();},child:  Text("${count}"),
@@ -106,12 +106,11 @@ void resetVariables() {
         onTap: (index){changeSelectedINdex(index);},
         index: _selectIndex,
          items:<Widget> [
-           
-           Icon(Icons.mosque,color: Colors.white,),
-           Icon(Icons.read_more,color: Colors.white,)
+             Icon(Icons.read_more,color: Colors.white,),
+             Icon(Icons.mosque,color: Colors.white,),
       ]),
       
-      body: _selectIndex==0 ?  Tasbi7Page(count: count,CheckTasbi7: CheckTasbi7,finalTsbi7:finalFirstTasbi7,resetVariables: resetVariables,playConfetti:playConfetti) : const MoreDetails(),
+      body: _selectIndex==1 ?  Tasbi7Page(count: count,CheckTasbi7: CheckTasbi7,finalTsbi7:finalFirstTasbi7,resetVariables: resetVariables,playConfetti:playConfetti) : const MoreDetails(),
     ),
     );
   }
